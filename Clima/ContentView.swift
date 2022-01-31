@@ -8,9 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var cityName = "Tucuman"
+
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        
+        Text("Ciudad \(cityName)")
+    
+        TextField("Introduzca una ciudad", text: $cityName)
+        
+       
+       
     }
 }
 

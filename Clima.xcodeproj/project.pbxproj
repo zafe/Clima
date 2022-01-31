@@ -14,6 +14,10 @@
 		ED8A761427A6DFE4009C0C9D /* ClimaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8A761327A6DFE4009C0C9D /* ClimaTests.swift */; };
 		ED8A761E27A6DFE4009C0C9D /* ClimaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8A761D27A6DFE4009C0C9D /* ClimaUITests.swift */; };
 		ED8A762027A6DFE4009C0C9D /* ClimaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8A761F27A6DFE4009C0C9D /* ClimaUITestsLaunchTests.swift */; };
+		ED8A762D27A6E827009C0C9D /* OpenWeatherMapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8A762C27A6E827009C0C9D /* OpenWeatherMapService.swift */; };
+		ED8A762F27A6E83F009C0C9D /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8A762E27A6E83F009C0C9D /* WeatherService.swift */; };
+		ED8A763227A6E8BC009C0C9D /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8A763127A6E8BC009C0C9D /* City.swift */; };
+		ED8A763427A6E8E6009C0C9D /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8A763327A6E8E6009C0C9D /* WeatherData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,10 @@
 		ED8A761927A6DFE4009C0C9D /* ClimaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClimaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED8A761D27A6DFE4009C0C9D /* ClimaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimaUITests.swift; sourceTree = "<group>"; };
 		ED8A761F27A6DFE4009C0C9D /* ClimaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimaUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		ED8A762C27A6E827009C0C9D /* OpenWeatherMapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherMapService.swift; sourceTree = "<group>"; };
+		ED8A762E27A6E83F009C0C9D /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		ED8A763127A6E8BC009C0C9D /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		ED8A763327A6E8E6009C0C9D /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,10 +102,13 @@
 		ED8A760127A6DFDB009C0C9D /* Clima */ = {
 			isa = PBXGroup;
 			children = (
+				ED8A763027A6E8AE009C0C9D /* Models */,
 				ED8A760227A6DFDB009C0C9D /* ClimaApp.swift */,
 				ED8A760427A6DFDB009C0C9D /* ContentView.swift */,
 				ED8A760627A6DFE3009C0C9D /* Assets.xcassets */,
 				ED8A760827A6DFE3009C0C9D /* Preview Content */,
+				ED8A762C27A6E827009C0C9D /* OpenWeatherMapService.swift */,
+				ED8A762E27A6E83F009C0C9D /* WeatherService.swift */,
 			);
 			path = Clima;
 			sourceTree = "<group>";
@@ -125,6 +136,15 @@
 				ED8A761F27A6DFE4009C0C9D /* ClimaUITestsLaunchTests.swift */,
 			);
 			path = ClimaUITests;
+			sourceTree = "<group>";
+		};
+		ED8A763027A6E8AE009C0C9D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ED8A763127A6E8BC009C0C9D /* City.swift */,
+				ED8A763327A6E8E6009C0C9D /* WeatherData.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,7 +277,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED8A762F27A6E83F009C0C9D /* WeatherService.swift in Sources */,
+				ED8A763227A6E8BC009C0C9D /* City.swift in Sources */,
 				ED8A760527A6DFDB009C0C9D /* ContentView.swift in Sources */,
+				ED8A762D27A6E827009C0C9D /* OpenWeatherMapService.swift in Sources */,
+				ED8A763427A6E8E6009C0C9D /* WeatherData.swift in Sources */,
 				ED8A760327A6DFDB009C0C9D /* ClimaApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
