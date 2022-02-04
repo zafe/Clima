@@ -18,24 +18,6 @@ class ClimaTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func testGetCurrentWeather_OpenWeatherMap() async {
-        
-        let openWeatherMapService = OpenWeatherMapService()
-        do{
-        let weather = try await openWeatherMapService.getCurrentWeather(for: City(name: "san francisco"))
-        print("""
-
-        CITY: \(weather.city)
-        DATE: \(weather.date)
-        TEMPERATURE: \(weather.temperature)
-        VISIBILITY: \(weather.description)
-
-        """)
-        }catch{
-            print("hubo un error")
-        }
-        
-    }
 
 
     func testExample() throws {

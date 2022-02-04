@@ -13,10 +13,10 @@ class OpenWeatherMapService: WeatherService {
     let unit = "metric"
     let language = "es"
     
-    func getCurrentWeather(for city: City) async throws -> WeatherData {
+    func getCurrentWeather(for city: String) async throws -> WeatherData {
         
         let arguments = [
-            city.name,
+            city,
             language,
             unit
         ]
@@ -45,7 +45,7 @@ class OpenWeatherMapService: WeatherService {
         
         
         
-        return WeatherData(city: city,
+        return WeatherData(
                            date: date,
                            temperature: temperature,
                            feelsLike: feelsLike,
@@ -56,7 +56,7 @@ class OpenWeatherMapService: WeatherService {
         
     }
     
-    func getExtendedWeather(for city: City) async throws -> ExtendedWeatherData {
+    func getExtendedWeather(for city: String) async throws -> ExtendedWeatherData {
         return ExtendedWeatherData()
     }
 }

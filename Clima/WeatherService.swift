@@ -9,7 +9,7 @@ import Foundation
 
 protocol WeatherService{
     
-    func getCurrentWeather(for city: City) async throws -> WeatherData
-    func getExtendedWeather(for city: City) async throws -> ExtendedWeatherData
+    func getCurrentWeather(for city: String) async throws -> WeatherData
+    func getExtendedWeather(for city: String) async throws -> ExtendedWeatherData
     
 }

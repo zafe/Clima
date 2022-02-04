@@ -10,7 +10,7 @@ import CoreImage
 
 struct WeatherData {
     
-    let city: City
+    //let city: String
     let date: Date
     let temperature: Double
     let feelsLike: Double
