@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class OpenWeatherMapService: WeatherService {
     
@@ -35,6 +36,7 @@ class OpenWeatherMapService: WeatherService {
         
         let city = city
         let date = Date()
+        let coordinate = (owd.coord.lon, owd.coord.lat)
         let temperature = owd.main.temp
         let feelsLike = owd.main.feels_like
         let description = owd.weather.first?.description ?? "Sin descripcion"
@@ -46,6 +48,7 @@ class OpenWeatherMapService: WeatherService {
         
         
         return WeatherData(
+                           coordinate: coordinate,
                            date: date,
                            temperature: temperature,
                            feelsLike: feelsLike,
@@ -80,7 +83,12 @@ fileprivate struct OpenWeatherData: Codable {
         let speed: Double
         let deg: Int
     }
+    struct Coord: Codable {
+        let lon: Double
+        let lat: Double
+    }
     let main: Main
+    let coord: Coord
     let weather: [Weather]
     let wind: Wind
     let visibility: Int

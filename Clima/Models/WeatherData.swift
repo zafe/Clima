@@ -7,10 +7,13 @@
 
 import Foundation
 import CoreImage
+import SwiftUI
 
 struct WeatherData {
-    
+    typealias Latitude = Double
+    typealias Longitude = Double
     //let city: String
+    let coordinate: (Longitude, Latitude)
     let date: Date
     let temperature: Double
     let feelsLike: Double
