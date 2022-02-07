@@ -41,7 +41,7 @@ struct WeatherSummary_Previews: PreviewProvider {
     
     static var citty = CityWeatherData(
         city: "Londres",
-        currentWeather: WeatherData(date: Date(), temperature: 23.0, feelsLike: 24.5, description: "Nubes de algodón", humidity: 3, minTemp: 12.0, maxTemp: 32.0)
+        currentWeather: WeatherData(coordinate: (-0.1257, 51.5085), date: Date(), temperature: 23.0, feelsLike: 24.5, description: "Nubes de algodón", humidity: 3, minTemp: 12.0, maxTemp: 32.0)
     )
   
     static var previews: some View {
