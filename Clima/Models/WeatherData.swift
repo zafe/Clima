@@ -9,10 +9,11 @@ import Foundation
 import CoreImage
 import SwiftUI
 
-struct WeatherData {
+struct WeatherData: Identifiable {
     typealias Latitude = Double
     typealias Longitude = Double
     //let city: String
+    let id = UUID()
     let coordinate: (Longitude, Latitude)
     let date: Date
     let temperature: Double

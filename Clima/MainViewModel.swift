@@ -13,13 +13,13 @@ import Combine
 class MainViewModel: ObservableObject {
     
     private var service: WeatherService
+    fileprivate let storage: StorageProvider
     @Published var data: [CityWeatherData]
     
-    init(serviceProvider: WeatherService = OpenWeatherMapService()){
+    init(serviceProvider: WeatherService = OpenWeatherMapService(), storageProvider: StorageProvider = DefaultsProvider()){
         self.service = serviceProvider
-        var tucuman = CityWeatherData()
-        tucuman.city = "san miguel de tucuman"
-        self.data = [tucuman]
+        self.storage = storageProvider
+        self.data = []
     }
     
     func updateCurrentWeatherData() async {
@@ -28,10 +28,8 @@ class MainViewModel: ObservableObject {
         do{
         var index = 0
         for try await weatherData in weatherWatcher {
-            //self.data[index].city = ["londres","buenos aires","dubai","casablanca"].randomElement()
             print(weatherData)
             self.data[index].currentWeather = weatherData
-            
             index += 1
         }
             DispatchQueue.main.async { [weak self] in
@@ -40,6 +38,38 @@ class MainViewModel: ObservableObject {
         } catch {
             //MARK: - TODO Handle Error
         }
+    }
+    
+    func updateExtendedWeather(for city: CityWeatherData) async {
+        do{
+            guard let index = self.data.firstIndex(where: { $0.id == city.id }) else { return }
+            let lon = String(city.currentWeather.coordinate.0)
+            let lat = String(city.currentWeather.coordinate.1)
+            let extendedWeather = try await self.service.getExtendedWeather(for: (lon, lat))
+            self.data[index].extendedWeather = extendedWeather
+            DispatchQueue.main.async { [weak self] in
+                self?.objectWillChange.send()
+            }
+        } catch {
+            //MARK: - TODO Handle Error
+        }
+        
+    }
+    
+    func saveAllCities(){
+        let cities = self.data.compactMap({ city in
+            return city.city
+        })
+        self.storage.saveAll(cities: cities)
+    }
+
+    func getAllCities(){
+        guard let cities = self.storage.getAll() else { return }
+        cities.forEach({ city in
+            let cityWD = CityWeatherData()
+            cityWD.city = city
+            self.data.add(cityWD)
+        })
     }
     
 }

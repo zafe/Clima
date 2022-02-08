@@ -8,8 +8,10 @@
 import Foundation
 
 protocol WeatherService{
+    typealias Latitude = String
+    typealias Longitude = String
     
     func getCurrentWeather(for city: String) async throws -> WeatherData
-    func getExtendedWeather(for city: String) async throws -> ExtendedWeatherData
+    func getExtendedWeather(for city: (Longitude, Latitude)) async throws -> ExtendedWeatherData
     
 }

@@ -20,6 +20,7 @@ struct MainView: View {
             Text("Clima").font(.largeTitle).bold()
             .task {
                 Task{
+                    viewModel.getAllCities()
                     await viewModel.updateCurrentWeatherData()
                 }
             }
@@ -57,7 +58,7 @@ struct MainView: View {
             }
         }).disabled(cityName == "")
         
-        if viewModel.data != nil {
+            if viewModel.data.count > 0 {
             
            /* ForEach($viewModel.data, id: \.id){ $data in
                 if data.currentWeather != nil {
@@ -81,19 +82,29 @@ struct MainView: View {
                                 viewModel.data.removeAll(where: {
                                     $0.id == $data.id
                                 })
+                                viewModel.saveAllCities()
                             }, label: {
                                 Image(systemName: "trash")
                             }).tint(.red)
                     }
                         
-            }else{
+            } else {
                 HStack(alignment: .center){
                 Spacer()
                     HStack{
-                        Text("cargando ciudad ⏳").foregroundColor(.gray)
+                        Spacer()
+                        Text("cargando ciudad ⏳")
+                        Spacer()
+                        }.foregroundColor(.gray)
+                    }.swipeActions{
+                        Button(action: {
+                            viewModel.data.removeAll(where: {
+                                $0.id == $data.id
+                            })
+                        }, label: {
+                            Image(systemName: "trash")
+                        }).tint(.red)
                     }
-                Spacer()
-                }
                 }
             }
         .refreshable {
@@ -101,21 +112,26 @@ struct MainView: View {
         }
         .sheet(item: $selectedCity){ city in
         
-            WeatherSummary(cityWeather: city)
+            ExtendedView(city: city, viewModel: self.viewModel)
             
         }
-            
-        
         }
+            else {
+                Spacer()
+                Text("Agrega una ciudad para ver el clima").foregroundColor(.gray)
+                Spacer()
+            }
         }
         }
     
     private func addCity() {
+    
         let newCity = CityWeatherData()
             newCity.city = cityName
             viewModel.data.add(newCity)
             Task {
                 await viewModel.updateCurrentWeatherData()
+                viewModel.saveAllCities()
             }
     }
 }
