@@ -28,13 +28,16 @@ class MainViewModel: ObservableObject {
         do{
         var index = 0
         for try await weatherData in weatherWatcher {
+            defer{
+                DispatchQueue.main.async { [weak self] in
+                    self?.objectWillChange.send()
+                }
+            }
             print(weatherData)
             self.data[index].currentWeather = weatherData
             index += 1
         }
-            DispatchQueue.main.async { [weak self] in
-                self?.objectWillChange.send()
-            }
+            
         } catch {
             //MARK: - TODO Handle Error
         }
